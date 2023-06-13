@@ -1,0 +1,71 @@
+---
+interface Props {
+  header: string;
+  copyText: string;
+  subHeader: string;
+  subHeaderText: string;
+  subList: {
+    header: string;
+    items: string[];
+  };
+}
+---
+
+<section class="w-full relative">
+  <div class="relative z-10 container mx-auto p-6 md:py-12 xl:p-8 2xl:max-w-[1400px] 2xl:pt-24">
+    <div class="grid gap-10 md:grid-cols-2 xl:gap-20">
+      <div>
+        <h1 class="text-4xl font-black flex items-center gap-4 mb-8 lg:text-5xl xl:text-6xl 2xl:mb-[60px]">
+          <img class="max-h-8" src="/sun-big-1.png" alt="Sun line drawing" />
+          <span>{Astro.props.header}</span>
+        </h1>
+        <p class="text-sm lg:text-normal xl:text-lg 2xl:text-xl 2xl:leading-normal">
+          {Astro.props.copyText}
+        </p>
+      </div>
+
+      <div class="md:pt-4 xl:pt-8">
+        <h2 class="font-black text-2xl md:text-3xl xl:text-4xl">
+          {Astro.props.subHeader}
+        </h2>
+        <hr class="w-4/5 my-2 bg-gray-400 border-none h-[1px] md:my-3 2xl:my-6 2xl:leading-normal" />
+        <p class="text-sm lg:text-normal xl:text-lg 2xl:text-xl">
+          {Astro.props.subHeaderText}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative sm:-mt-12 md:pb-2 lg:mt-4 xl:pb-16 2xl:pb-40 2xl:mt-16">
+
+    <div class="container mx-auto relative z-10 p-6 lg:pb-0 xl:p-8 xl:pb-0 xl:-mb-8 2xl:-mb-16 2xl:max-w-[1400px]">
+      <div class="mt-8 sm:mt-24 md:mt-12 lg:mt-12 xl:mt-16">
+        <h3
+          class="font-bold flex items-center gap-2 rounded-md bg-white w-max sm:px-3 pt-1.5 pb-1 mb-3"
+        >
+          <img class="max-h-4" src="/sun-big-1.png" alt="Sun line drawing" />
+          <span>{Astro.props.subList.header}</span>
+        </h3>
+        <ul
+            class="flex flex-col sm:flex-row gap-x-8 gap-y-4 flex-wrap sm:backdrop-blur-sm sm:py-2 sm:bg-white sm:bg-opacity-30 sm:rounded-md md:gap-x-12 md:gap-y-6 md:w-4/5 lg:w-3/5 lg:bg-opacity-0 lg:backdrop-blur-none"
+        >
+          {
+            Astro.props.subList.items.map((item) => (
+              <li class="text-sm flex items-center gap-2 font-bold lg:text-normal xl:text-lg 2xl:text-[20px]">
+                <img src="/arrow-right-circle.png" alt="" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <img
+      src="/bg.png"
+      alt="truck next to a lake"
+      class="h-64 max-h-[530px] object-cover -mt-20 z-0 w-full sm:absolute sm:bottom-6 lg:h-auto lg:bottom-0"
+    />
+  </div>
+
+</section>
